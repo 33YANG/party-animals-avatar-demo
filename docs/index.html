@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Party Animals Avatar</title>
+  <meta name="description" content="Party Animals Avatar Demo">
+  <link rel="icon" type="image/png" href="https://partyanimals.com/favicon@2x.png" sizes="32x32">
+  <style>
+    body {
+      margin: 0;
+    }
+
+    main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .title {
+      text-align: center;
+      margin: 6rem 0;
+      font-style: italic;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 3rem;
+      background-image: linear-gradient(120deg, #f6d365 0%, #fd8969 100%);
+    }
+
+    .content {
+      padding: 1rem 3rem;
+      background-color: #f6b852;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.5s ease-in-out;
+      user-select: none;
+    }
+
+    .image-container {
+      display: flex;
+      overflow: hidden;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      white-space: nowrap;
+      width: 100%;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .image-item {
+      position: relative;
+      padding: 3rem 1rem;
+      pointer-events: all;
+      user-select: none;
+      /* transition customize easing function*/
+      transition: transform 0.3s cubic-bezier(0.29, -0.12, 0.2, 1.5), margin 0.3s ease-in-out;
+    }
+
+    .image-avatar {
+      position: relative;
+      width: 160px;
+      object-fit: contain;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .image-bg {
+      position: absolute;
+      top: 23px;
+      right: -24px;
+      width: 240px;
+      z-index: 1;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .image-item:hover {
+      cursor: pointer;
+    }
+
+    .image-item:hover .image-bg {
+      opacity: 1;
+      transform: scale(1.08);
+      transition: all .3s ease-in-out;
+      animation: scale 1.5s ease-in-out infinite alternate;
+      animation-delay: 0.3s;
+    }
+
+    .image-item.active {
+      margin: 0 20px;
+      transform: scale(1.2);
+    }
+
+    .image-item.active .image-bg {
+      opacity: 1;
+      transform: scale(1.1);
+      /* animation-play-state: paused; */
+    }
+
+    .image-item.active:hover .image-bg {
+      /* animation-play-state: running; */
+      animation: scale_half 1.5s ease-in-out infinite alternate;
+    }
+
+    .left-foggy {
+      position: absolute;
+      top: 0;
+      left: 3rem;
+      width: 5rem;
+      height: 100%;
+      background-image: linear-gradient(to right, #f6b852, #f6b752c2 30%, transparent 100%);
+      z-index: 2;
+    }
+
+    .right-foggy {
+      position: absolute;
+      top: 0;
+      right: 3rem;
+      width: 5rem;
+      height: 100%;
+      background-image: linear-gradient(to left, #f6b852, #f6b752c2 30%, transparent 100%);
+      z-index: 2;
+    }
+
+    @keyframes scale {
+      0% {
+        transform: scale(1.08);
+      }
+
+      100% {
+        transform: scale(1.03);
+      }
+    }
+
+    @keyframes scale_half {
+      0% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1.06);
+      }
+    }
+
+    /* mobile style */
+    @media screen and (max-width: 768px) {
+      .content {
+        padding: 1rem 0rem;
+      }
+
+      .image-item {
+        padding: 1rem 0.5rem;
+      }
+
+      .image-avatar {
+        width: 100px;
+      }
+
+      .image-bg {
+        top: 1px;
+        right: -17px;
+        width: 150px;
+      }
+
+      .left-foggy {
+        left: 0rem;
+        width: 3rem;
+      }
+
+      .right-foggy {
+        right: 0rem;
+        width: 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Party Animals Avatar Demo</h1>
+  <main>
+    <div class="content">
+      <div class="image-container">
+        <div data-index="1" class="image-item" style="margin-left: 3rem;">
+          <img class="image-avatar"
+            src="https://partyanimals.com/static/img/characters_Underbite_avatar@2x.33a2c671.png" alt="Underbite">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="2" class="image-item">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Nemo_avatar@2x.63a141e4.png"
+            alt="Nemo">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="3" class="image-item">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Tiagra_avatar@2x.5e83ce85.png"
+            alt="Tiagra">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="4" class="image-item">
+          <img class="image-avatar"
+            src="https://partyanimals.com/static/img/characters_Macchiato_avatar@2x.2c32853a.png" alt="Macchiato">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="5" class="image-item active">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Otta_avatar@2x.2f6e8aed.png"
+            alt="Otta">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="6" class="image-item">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Morse_avatar@2x.792380c8.png"
+            alt="Morse">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="7" class="image-item">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Harry_avatar@2x.3d9e072b.png"
+            alt="Harry">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="8" class="image-item">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Coco_avatar@2x.a6aa14ee.png"
+            alt="Coco">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="9" class="image-item">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Carrot_avatar@2x.767abf31.png"
+            alt="Carrot">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="10" class="image-item">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Bacon_avatar@2x.68cdc429.png"
+            alt="Bacon">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="11" class="image-item">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Barbie_avatar@2x.e69e2da6.png"
+            alt="Barbie">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <div data-index="12" class="image-item" style="margin-right: 3rem">
+          <img class="image-avatar" src="https://partyanimals.com/static/img/characters_Valiente_avatar@2x.48a50153.png"
+            alt="Valiente">
+          <img class="image-bg" src="https://partyanimals.com/static/img/characters_avatar_hover@2x.a30820c5.png"
+            alt="avatar_hover">
+        </div>
+        <!-- Add more images here -->
+      </div>
+      <div class="left-foggy"></div>
+      <div class="right-foggy"></div>
+    </div>
+  </main>
+
+  <script>
+    const imageContainer = document.querySelector(".image-container"); // image container
+    const imageItemDom = document.querySelectorAll(".image-item"); // image item dom
+    const IMAGE_ITEM_LENGTH = 12; // image item length
+    let startX; // mouse down x position
+
+    // get max show image item in different screen size
+    const maxShowImageItem = Math.floor(imageContainer.offsetWidth / imageItemDom[0].offsetWidth);
+    const leftMoveItemIndex = IMAGE_ITEM_LENGTH - Math.floor(maxShowImageItem / 2) + 1;
+    const rightMoveItemIndex = Math.floor(maxShowImageItem / 2);
+    console.log('leftMoveItemIndex, rightMoveItemIndex', leftMoveItemIndex, rightMoveItemIndex);
+
+    // keyboard left and right action
+    document.addEventListener("keydown", function (event) {
+      const activeImageItem = document.querySelector('.image-item.active');
+      switch (event.keyCode) {
+        case 37: // keyboard left arrow
+          // left move image container, move width is activeImageItem width
+          // if current activeImageItem data-index < leftMoveItemIndex, move image container
+          if (activeImageItem && activeImageItem.previousElementSibling && activeImageItem.dataset.index < leftMoveItemIndex) {
+            moveImages(-activeImageItem.offsetWidth);
+          }
+          // left move current active image item
+          if (activeImageItem && activeImageItem.previousElementSibling) {
+            activeImageItem.classList.remove('active');
+            activeImageItem.previousElementSibling.classList.add('active');
+          }
+          break;
+        case 39: // keyboard right arrow
+          // right move image container, move width is activeImageItem width
+          // if current activeImageItem data-index > rightMoveItemIndex, move image container
+          if (activeImageItem && activeImageItem.nextElementSibling && activeImageItem.dataset.index > rightMoveItemIndex) {
+            moveImages(activeImageItem.offsetWidth);
+          }
+          // right move current active image item
+          if (activeImageItem && activeImageItem.nextElementSibling) {
+            activeImageItem.classList.remove('active');
+            activeImageItem.nextElementSibling.classList.add('active');
+          }
+          break;
+      }
+    });
+
+    imageContainer.addEventListener('click', function (event) {
+      // if not image-item dom, return
+      if (!event.target.classList.contains('image-item')) return
+
+      // add active class in image-item dom
+      event.target.classList.add('active');
+
+      // remove other active class
+      const imageItems = document.querySelectorAll('.image-item');
+      imageItems.forEach(item => {
+        if (item !== event.target) {
+          item.classList.remove('active');
+        }
+      })
+    });
+
+    // mouse down event
+    imageContainer.addEventListener("mousedown", throttle((e) => {
+      startX = e.pageX - imageContainer.offsetLeft;
+    }, 100));
+
+    // mouse up event
+    imageContainer.addEventListener('mouseup', throttle((e) => {
+      const endX = e.pageX - imageContainer.offsetLeft;
+      const distance = endX - startX;
+      requestAnimationFrame(() => {
+        imageContainer.scrollLeft -= distance;
+      })
+    }, 100))
+
+    /**
+     * move image container
+     * @param {number} offset move offset
+     */
+    function moveImages(offset) {
+      requestAnimationFrame(() => {
+        imageContainer.scrollLeft += offset;
+      })
+    }
+
+    /**
+     * throttle function
+     * @param {function} fn function
+     * @param {number} wait time
+     */
+    function throttle(fn, wait) {
+      let inThrottle;
+      return function () {
+        const context = this;
+        const args = arguments;
+        if (!inThrottle) {
+          fn.apply(context, args);
+          inThrottle = true;
+          requestAnimationFrame(() => {
+            inThrottle = false;
+          });
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>
